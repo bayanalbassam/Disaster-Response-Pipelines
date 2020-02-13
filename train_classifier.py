@@ -19,8 +19,7 @@ nltk.download('wordnet')
 
 
 def load_data(database_filepath: str)->Tuple[pd.DataFrame, pd.DataFrame, List[str]]:
-    
-    # Load data from database
+    """Load filepath and return data"""
     engine = create_engine('sqlite:///' + database_filepath)
     df = pd.read_sql("SELECT * FROM Messages", engine)
     
@@ -33,17 +32,16 @@ def load_data(database_filepath: str)->Tuple[pd.DataFrame, pd.DataFrame, List[st
     
     return X, Y, category_names
 
-
-
 def tokenize(text:str)->List[str] :
+    """Tokenize and transform input text then return a cleaned text"""
     tokens = nltk.word_tokenize(text)
-
     # create a lemmatizer and apply it to each token
     lemmatizer = nltk.WordNetLemmatizer()
     return [lemmatizer.lemmatize(x).lower().strip() for x in tokens]
 
 
 def build_model():
+     """Return Grid Search model with pipeline and Classifier"""
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize)),
         ('tfidf', TfidfTransformer()),
@@ -59,9 +57,19 @@ def build_model():
 
 
 def evaluate_model(model, X_test, y_test, category_names):
+     """Print model results
+    INPUT
+    model -- required, estimator-object
+    X_test -- required
+    y_test -- required
+    category_names = required, list of category strings
+    OUTPUT
+    None
+    """
     y_pred = model.predict(X_test)
 
 def save_model(model, model_filepath):
+    """Save model as pickle file"""
     pickle.dump(model, open(model_filepath, 'wb'))
 
 def main():
