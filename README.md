@@ -12,6 +12,21 @@ This project is to classify disaster response messages through machine learning
 3. App
     - run.py: Flask app and the user interface used to predict results and display them.
 
+### Requirements:
+To install and run this application, you need following libraries:
+
+Python 3 or above
+Databse Libraries: SQLlite and SQLalchemy
+Data Analysis Libraries: NumPy and Pandas
+Machine Learning Libraries: Scikit-Learn
+Natural Language Processing Libraries: NLTK
+Web Application Libraries: Flask
+Visualization Libraries: Plotly
+
+### Installation:
+To install the project on your local machine, clone this repository by running:
+
+git clone https://github.com/bayanalbassam/Disaster-Response-Pipelines.git
 
 ### Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
@@ -25,3 +40,14 @@ This project is to classify disaster response messages through machine learning
     `python run.py`
 
 3. Go to http://0.0.0.0:3001/
+
+### Files Descriptions:
+Below is a short description of the main files in this repository:
+
+data/process_data.py: A python script that loads the data from the 'messages.csv' and 'categories.csv' files, merges them, and loads them to a databse file.
+models/train_classifier.py:  A python script that creates an AdaBoost machine learning model, tains the model and does a grid-search to find the best model parameter then stores the model in a .pkl file
+app/run.py: The main application file, built with Flask framework. It uses the data base files to visualize the message data and the trained ML model to predict an input message importance and categories.
+
+
+### Acknowledgments:
+This project was build as part of Udacity's Data Scientist Nanodegree Program, and it uses code snippets/files from the course. It also uses data from Figure Eight. The support from both Udacity and Figure Eight is greatly acknowledged.
