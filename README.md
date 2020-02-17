@@ -40,6 +40,7 @@ git clone https://github.com/bayanalbassam/Disaster-Response-Pipelines.git
     `python run.py`
 
 3. Go to http://0.0.0.0:3001/
+ https://view6914b2f4-3001.udacity-student-workspaces.com/
 
 ### Files Descriptions:
 Below is a short description of the main files in this repository:
